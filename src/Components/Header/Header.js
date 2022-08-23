@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { LoginDiaglog } from './LoginDialog';
-import { NavBar } from './NavBar'
+import NavBar from './NavBar'
 
+// This Component is the Overall wrapper to the Navbar and the login/signup modal
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const handleClickOpen = () => {
+    // Open and close the login/signup modal
+    const handleClickOpen = useCallback(() => {
         setIsModalOpen(true);
-    };
-
+    }, [] );
+    
     const handleClickClose = () => {
         setIsModalOpen(false);
     };
