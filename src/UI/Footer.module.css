@@ -1,0 +1,18 @@
+#footer-container{
+    height: 3rem;
+    background-color: #f2f3f5;
+}
+
+#footer-container > div{
+    max-width: min(80rem, 90%);
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#footer-inner-container > div *{
+    margin-left: .5rem;
+}

@@ -14,26 +14,22 @@ import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { deepPurple } from '@mui/material/colors';
 import Slide from '@mui/material/Slide';
 import { AuthContext } from "../../Contexts/AuthContextProvider";
-
+import Container from "@mui/material/Container";
 const settings = ["Profile", "Account", "Dashboard"];
 const tabs = ["Planable", "Projects", "Bug Tracker"];
 
 const NavBar = (props) => {
     const authCtx = useContext(AuthContext);
-    const [value, setValue] = useState("Planable"); // Keep track of current tab
     const [anchorElUser, setAnchorElUser] = useState(null); // keep track of current window/closed/open
 
-    // Have the slider move back to original value
-    useEffect(() => {
-        setValue("Planable");
-    }, [authCtx.token]);
 
     const handleNavigationChange = (event, newValue) => {
         // Change the current tab target
         if (newValue) {
-            setValue(newValue);
+            props.onPageChange(newValue);
         }
     };
 
@@ -69,7 +65,7 @@ const NavBar = (props) => {
 
     const navContent = (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar color="primary" position="fixed">
+            <AppBar style={{ background: '#0A0A0A' }} position="fixed">
                 <Toolbar>
                     {/* Icon/Title */}
                     <EngineeringOutlinedIcon
@@ -87,11 +83,11 @@ const NavBar = (props) => {
                     {/* Page Navigation */}
                     <Tabs
                         sx={{ display: { xs: "none", md: "flex" }, mr: 2 }}
-                        value={value}
+                        value={props.page}
+                        TabIndicatorProps={{style: {backgroundColor: "white"}}}
                         onChange={handleNavigationChange}
-                        textColor="secondary"
-                        indicatorColor="secondary"
-                        aria-label="secondary tabs example"
+                        textColor="inherit"
+                        aria-label="white tabs example"
                     >
                         {createTabs}
                     </Tabs>
@@ -138,7 +134,7 @@ const NavBar = (props) => {
                                         sx={{ p: 0 }}
                                     >
                                         <Avatar
-                                            alt="Harold Suquillo"
+                                            sx={{ bgcolor: deepPurple['A400'] }}
                                             src="../../public/logo192.png"
                                         />
                                     </IconButton>
