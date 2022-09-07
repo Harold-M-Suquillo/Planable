@@ -1,8 +1,8 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Header } from "./Components/Header/Header";
-import { AuthContextProvider } from "./Contexts/AuthContextProvider";
-import { theme } from "./theme";
+import { AuthContextProvider } from "./Utils/AuthContextProvider";
+import { theme } from "./Utils/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
 import { HomePage } from './Components/HomePage/HomePage';

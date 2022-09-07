@@ -3,7 +3,6 @@ import React, { useState, useContext, useMemo } from "react";
 import { AppBar, Typography } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
-import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Button from "@mui/material/Button";
@@ -17,7 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { deepPurple } from '@mui/material/colors';
 import Slide from '@mui/material/Slide';
 import ElectricBoltRoundedIcon from '@mui/icons-material/ElectricBoltRounded';
-import { AuthContext } from "../../Contexts/AuthContextProvider";
+import { AuthContext } from "../../Utils/AuthContextProvider";
 
 const settings = ["Profile", "Account", "Dashboard"];
 const tabs = ["Planable", "Dashboard", "Tickets"];

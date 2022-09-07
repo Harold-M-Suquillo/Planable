@@ -7,8 +7,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { useInput } from "../../Hooks/useInput";
-import { AuthContext } from "../../Contexts/AuthContextProvider";
+import { useInput } from "../../Utils/useInput";
+import { AuthContext } from "../../Utils/AuthContextProvider";
 
 // This component is the login/signup modal/form
 const LoginDiaglog = (props) => {
