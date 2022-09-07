@@ -10,12 +10,16 @@ const Footer = () => {
     return ReactDOM.createPortal(
         <div id={styles["footer-container"]}>
             <div id={styles['footer-inner-container']}>
-                <p>&copy; 2020 Planable. All rights reserved.</p>
+                <p>&copy; 2022 Planable. All rights reserved.</p>
                 <div>
                     <FacebookIcon color="action"/>
                     <TwitterIcon color="action"/>
-                    <InstagramIcon color="action"/>
-                    <LinkedInIcon color="action"/>
+                    <a href="https://www.instagram.com/?hl=en" >
+                        <InstagramIcon color="action"/>
+                    </a>
+                    <a href="www.linkedin.com/in/haroldsuquillo" target="_blank">
+                        <LinkedInIcon color="action"/>
+                    </a>
                 </div>
             </div>
         </div>,

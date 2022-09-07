@@ -13,6 +13,11 @@
     align-items: center;
 }
 
+#footer-inner-container > p {
+    color: #757575;
+}
+
 #footer-inner-container > div *{
     margin-left: .5rem;
+    color: #6C63FF;
 }

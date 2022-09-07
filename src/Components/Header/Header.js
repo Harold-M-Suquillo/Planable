@@ -14,10 +14,6 @@ const Header = (props) => {
     const handleClickClose = () => {
         setIsModalOpen(false);
     };
-
-
-
-
     return(
         <>
             <NavBar onLogin={handleClickOpen} onPageChange={props.onPageChange} page={props.page}/>

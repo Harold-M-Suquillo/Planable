@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import React, { useState, useContext, useEffect, useMemo } from "react";
+import React, { useState, useContext, useMemo } from "react";
 import { AppBar, Typography } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
@@ -16,10 +16,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { deepPurple } from '@mui/material/colors';
 import Slide from '@mui/material/Slide';
+import ElectricBoltRoundedIcon from '@mui/icons-material/ElectricBoltRounded';
 import { AuthContext } from "../../Contexts/AuthContextProvider";
-import Container from "@mui/material/Container";
+
 const settings = ["Profile", "Account", "Dashboard"];
-const tabs = ["Planable", "Projects", "Bug Tracker"];
+const tabs = ["Planable", "Dashboard", "Tickets"];
 
 const NavBar = (props) => {
     const authCtx = useContext(AuthContext);
@@ -65,12 +66,12 @@ const NavBar = (props) => {
 
     const navContent = (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar style={{ background: '#0A0A0A' }} position="fixed">
+            <AppBar style={{ background: '#343434' }} position="fixed">
                 <Toolbar>
                     {/* Icon/Title */}
-                    <EngineeringOutlinedIcon
+                    <ElectricBoltRoundedIcon
                         fontSize="large"
-                        sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+                        sx={{ display: {color: "#6C63FF", xs: "none", md: "flex" }, mr: 1 }}
                     />
                     <Typography
                         variant="h5"

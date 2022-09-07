@@ -2,33 +2,79 @@
     max-width: min(80rem, 90%);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 6rem;
+    margin-top: 7.5rem;
 }
 
 #image-header-container{
     display: flex;
-    border: 2px solid red;
     height: 25rem;
     justify-content: space-around;
+    margin-bottom: 8rem;
 }
 
-
 .header-text-container{
-    max-width: 25rem;
+    max-width: 40rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background-color: #f2f3f5;
+    border-radius: 60% 10%;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    padding-top: 2rem;
     
 }
+
 .header-text-container > h2{
+    color: #6C63FF;
     margin-bottom: 1rem;
-    font-size: 1.6rem;
-    font-weight: 525;
+    font-size: 3rem;
+    font-weight: 800;
 }
+
 .header-text-container > p{
+    text-align: justify;
+    font-size: .9rem;
+    line-height: 1.25rem;
     margin-bottom: .25rem;
+    width: 20rem;
 }
+
 .header-text-container > div{
     font-size: .8rem;
     color: rgb(72, 70, 70)
+}
+
+#about-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 5rem;
+
+}
+body{
+    height: 110vh;
+}
+
+
+
+@media only screen and (max-width: 60rem) {
+    #image-header-container > img {
+        display: none;
+    }
+    .header-text-container{
+        max-width: 30rem;
+    }
+    #about-container{
+        flex-wrap: wrap;
+    }
+    #about-container > div{
+        max-width: 80%;
+        
+    }
+}
+
+@media only screen and (max-width: 82rem) and (min-width: 60rem){
+    #last-container{
+        display: none
+    }
 }
