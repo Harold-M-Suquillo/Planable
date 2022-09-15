@@ -29,7 +29,10 @@ const useHttp = () => {
             }
         } catch (error) {
             if (requestConfig.response){
-                enqueueSnackbar( error.detail ? error.detail : 'Request Failed', { variant:'error' })
+                console.log(error)
+                for (let msg in error.detail){
+                    enqueueSnackbar( error.detail[msg], { variant:'error' });
+                };
             };
         }
         setIsLoading(false);

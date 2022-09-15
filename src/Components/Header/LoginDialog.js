@@ -24,7 +24,7 @@ const LoginDiaglog = (props) => {
         ValueInputBlurHandler: passwordBlurHandler,
         valueIsValid: passwordInputIsValid,
     } = useInput((input) =>
-        input.match(/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&/? "]).*$/)
+        input.length > 3
     );
 
     // email input
@@ -36,9 +36,18 @@ const LoginDiaglog = (props) => {
         valueIsValid: emailInputIsValid,
     } = useInput((input) => input.match(/^\S+@\S+\.\S+$/));
 
+    // username input
+    const {
+        value: enteredUsername,
+        hasError: usernameInputHasError,
+        ValueInputChangeHandler: usernameChangeHandler,
+        ValueInputBlurHandler: usernameBlurHandler,
+        valueIsValid: usernameInputIsValid,
+    } = useInput((input) => input.length > 2);
+
     // Check if the overall form is valid
     let formIsValid = false;
-    if (passwordInputIsValid && emailInputIsValid) {
+    if (passwordInputIsValid && emailInputIsValid && (request === 'login' ? true : usernameInputIsValid)) {
         formIsValid = true;
     }
 
@@ -46,12 +55,13 @@ const LoginDiaglog = (props) => {
     const formSubmissionHandler = (e) => {
         e.preventDefault();
         // Checks the type of request the user wants to make
-        authCtx.authenticate(request, {email: enteredEmail, password: enteredPassword}, props.onClose)
+        authCtx.authenticate(
+            request,
+            { email: enteredEmail, password: enteredPassword, username: enteredUsername },
+            props.onClose
+        );
         // Only close the modal if therre is no error
     };
-
-
-
 
     // Handle user changing request type login/create account
     const changeRequestHandler = () => {
@@ -94,6 +104,25 @@ const LoginDiaglog = (props) => {
             {/* email/password form */}
             <form onSubmit={formSubmissionHandler}>
                 <DialogContent dividers>
+                    {requestHeader === "Create An Account" && (
+                        <TextField
+                            value={enteredUsername}
+                            onChange={usernameChangeHandler}
+                            onBlur={usernameBlurHandler}
+                            error={usernameInputHasError}
+                            helperText={
+                                usernameInputHasError
+                                    ? "Username must has at least 3 characters"
+                                    : " "
+                            }
+                            id="standard-basic"
+                            label="username"
+                            variant="standard"
+                            type="text"
+                            margin="normal"
+                            fullWidth
+                        />
+                    )}
                     <TextField
                         value={enteredEmail}
                         onChange={emailChangeHandler}
@@ -116,7 +145,7 @@ const LoginDiaglog = (props) => {
                         error={passwordInputHasError}
                         helperText={
                             passwordInputHasError
-                                ? "password must contain at least 8 characters including 1 number, 1 letter and 1 unique character"
+                                ? "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:"
                                 : " "
                         }
                         id="standard-basic"
@@ -126,6 +155,7 @@ const LoginDiaglog = (props) => {
                         margin="normal"
                         fullWidth
                     />
+
                     {/* create/login Button */}
                     <Button
                         size="small"

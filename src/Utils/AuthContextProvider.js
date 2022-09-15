@@ -72,14 +72,13 @@ const AuthContextProvider = (props) => {
         setToken(null);
     };
 
-    const signupHandler = async (email, password, callback = null) => {
-        console.log(email, password);
+    const signupHandler = async (email, password, username, callback = null) => {
         sendAuthRequest(
             {
                 url: "http://127.0.0.1:8000/signup",
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ email, password}),
+                body: JSON.stringify({ email, password, username }),
                 response: {
                     message: "Account Creation Successful!",
                     variant: "success",
@@ -102,7 +101,7 @@ const AuthContextProvider = (props) => {
                 loginHandler(payload.email, payload.password, closeModal);
                 break;
             case "signup":
-                signupHandler(payload.email, payload.password, closeModal);
+                signupHandler(payload.email, payload.password, payload.username, closeModal);
                 break;
             case "logout":
                 logoutHandler();
